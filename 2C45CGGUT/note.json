@@ -1,0 +1,238 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n## Welcome to the PHEMI Data Science Toolkit R1.4\nBuilt using:\n* Spark version 1.6.1 for Hadoop 2.6\n* Zeppelin version 0.6.0 with `SPARK_HOME` set to Spark 1.6.1 for Hadoop 2.6\n* HttpClient 4.4 \u0026 HttpCore 4.4\n* PHEMI Data Source Library 1.1\n* PHEMI Zeppelin Library 1.0",
+      "dateUpdated": "Dec 1, 2016 11:52:46 PM",
+      "config": {
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12.0,
+        "editorHide": true,
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1480636366878_-1221505045",
+      "id": "20160616-143115_478858631",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003ch2\u003eWelcome to the PHEMI Data Science Toolkit R1.4\u003c/h2\u003e\n\u003cp\u003eBuilt using:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eSpark version 1.6.1 for Hadoop 2.6\u003c/li\u003e\n\u003cli\u003eZeppelin version 0.6.0 with \u003ccode\u003eSPARK_HOME\u003c/code\u003e set to Spark 1.6.1 for Hadoop 2.6\u003c/li\u003e\n\u003cli\u003eHttpClient 4.4 \u0026amp; HttpCore 4.4\u003c/li\u003e\n\u003cli\u003ePHEMI Data Source Library 1.1\u003c/li\u003e\n\u003cli\u003ePHEMI Zeppelin Library 1.0\u003c/li\u003e\n\u003c/ul\u003e\n"
+      },
+      "dateCreated": "Dec 1, 2016 11:52:46 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nFirst, load a PHEMI Central data collection into a Spark DataFrame. In the PHEMI Data Science\nToolkit, Zeppelin is aware of what data collections are configured in PHEMI Central, so you \ncan select the data collection you want from the drop-down box. ",
+      "dateUpdated": "Dec 1, 2016 11:52:46 PM",
+      "config": {
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12.0,
+        "editorHide": true,
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 59.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1480636366878_-1221505045",
+      "id": "20160819-181231_176639481",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cp\u003eFirst, load a PHEMI Central data collection into a Spark DataFrame. In the PHEMI Data Science\n\u003cbr  /\u003eToolkit, Zeppelin is aware of what data collections are configured in PHEMI Central, so you\n\u003cbr  /\u003ecan select the data collection you want from the drop-down box.\u003c/p\u003e\n"
+      },
+      "dateCreated": "Dec 1, 2016 11:52:46 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Load Data Collection",
+      "text": "import com.phemi.zeppelin.ZeppelinPhemiCredentials\nimport com.phemi.spark.PhemiSparkLib\n\nval cred \u003d new ZeppelinPhemiCredentials(z.getInterpreterContext())\nval psl \u003d new PhemiSparkLib(cred, sqlContext)\n\nval dataCollectionList \u003d psl.listPhemiDataCollectionInfo.select(\"name\")\n                            .map(row \u003d\u003e (row(0).toString, row(0).toString)).collect\nval dataCol \u003d z.select(\"Data Collections in Phemi Central\", dataCollectionList).toString\nprintln(\"%html\")",
+      "user": "admin",
+      "dateUpdated": "Dec 1, 2016 11:52:49 PM",
+      "config": {
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6.0,
+        "editorHide": true,
+        "title": true,
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        }
+      },
+      "settings": {
+        "params": {
+          "Data Collections in Phemi Central": "DSTK Testing",
+          "Data Collection": "sentiment",
+          "Data Collection in Phemi Central": "treatment"
+        },
+        "forms": {
+          "Data Collections in Phemi Central": {
+            "name": "Data Collections in Phemi Central",
+            "displayName": "Data Collections in Phemi Central",
+            "type": "select",
+            "defaultValue": "",
+            "options": [
+              {
+                "value": "DSTK Testing",
+                "displayName": "DSTK Testing"
+              },
+              {
+                "value": "FEAT_ACC_FUNCTIONS",
+                "displayName": "FEAT_ACC_FUNCTIONS"
+              },
+              {
+                "value": "FEAT_AUDIT_LOGGING_01",
+                "displayName": "FEAT_AUDIT_LOGGING_01"
+              },
+              {
+                "value": "FEAT_COLL_POL_DSHARE",
+                "displayName": "FEAT_COLL_POL_DSHARE"
+              },
+              {
+                "value": "FEAT_COLL_POL_RETENTION",
+                "displayName": "FEAT_COLL_POL_RETENTION"
+              }
+            ],
+            "hidden": false
+          }
+        }
+      },
+      "jobName": "paragraph_1480636366879_-1221889794",
+      "id": "20160616-143115_349239953",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": ""
+      },
+      "dateCreated": "Dec 1, 2016 11:52:46 PM",
+      "dateStarted": "Dec 1, 2016 11:52:49 PM",
+      "dateFinished": "Dec 1, 2016 11:53:09 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Verify the DataFrame",
+      "text": "val df \u003d psl.loadPhemiDataCollection(dataCol)\ndf.show",
+      "dateUpdated": "Dec 1, 2016 11:52:46 PM",
+      "config": {
+        "tableHide": false,
+        "editorMode": "ace/mode/scala",
+        "colWidth": 6.0,
+        "editorHide": false,
+        "title": true,
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1480636366879_-1221889794",
+      "id": "20160616-143115_332869884",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "df: org.apache.spark.sql.DataFrame \u003d [Sheet1_birthdate: timestamp, Sheet1_city: string, Sheet1_first_name: string, Sheet1_health_number: bigint, Sheet1_last_name: string, Sheet1_weight_kg: double]\n+--------------------+--------------------+-----------------+--------------------+----------------+----------------+\n|    Sheet1_birthdate|         Sheet1_city|Sheet1_first_name|Sheet1_health_number|Sheet1_last_name|Sheet1_weight_kg|\n+--------------------+--------------------+-----------------+--------------------+----------------+----------------+\n|2004-05-29 00:00:...|           Cyrusberg|           Joseph|                1111|         Cornish|            12.2|\n|2005-04-05 00:00:...|           Kiehnland|            Kylie|                2222|           Short|           232.2|\n|1973-01-17 00:00:...|          Anissatown|           Audrey|                3333|          Miller|        88.88888|\n|1969-05-22 00:00:...|    Lake Kendrashire|          Theresa|                4444|         McGrath|          87.122|\n|1989-05-05 00:00:...|           Alexaport|          Brandon|                5555|      Rutherford|          57.212|\n|1993-10-18 00:00:...|     New Derickmouth|         Benjamin|                6666|           Jones|          100.22|\n|1982-02-22 00:00:...|       Celestineland|           Amanda|                7777|        Campbell|           250.1|\n|1964-06-13 00:00:...|           East Olen|           Joseph|                8888|         Burgess|            32.9|\n|1930-09-08 00:00:...|     Port Derickport|            Gavin|                9999|           Alsop|           130.1|\n|1950-09-18 00:00:...|       South Eduardo|             Jane|                1212|         Langdon|         99.2222|\n|1966-07-19 00:00:...|       Bettieborough|             Ella|                2332|           Scott|           65.23|\n|1973-12-29 00:00:...|         Enriqueport|           Joshua|                4545|          Wright|           43.32|\n|1979-07-05 00:00:...|          West Shany|            Bella|                7788|        Lawrence|          32.122|\n|2000-01-19 00:00:...|     Lake Jaymehaven|            Chloe|                8989|          Wilson|           67.23|\n|2002-10-12 00:00:...|         Osborneberg|              Ava|                9191|         Langdon|           98.24|\n|1951-07-06 00:00:...|         South Duane|           Henrik|                8484|           Nolan|           34.23|\n|1972-12-30 00:00:...|South Mathildebor...|           Daniel|                2020|           Jones|       89.244444|\n+--------------------+--------------------+-----------------+--------------------+----------------+----------------+\n\n"
+      },
+      "dateCreated": "Dec 1, 2016 11:52:46 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "dateUpdated": "Dec 1, 2016 11:52:46 PM",
+      "config": {
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12.0,
+        "editorHide": true,
+        "enabled": true,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1480636366879_-1221889794",
+      "id": "20160706-121022_902381243",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 1, 2016 11:52:46 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Test",
+  "id": "2C45CGGUT",
+  "angularObjects": {
+    "2C48ZH46Q:shared_process": [],
+    "2C4VE97GU:shared_process": [],
+    "2C5KQUX9D:shared_process": [],
+    "2C4U8E42K:shared_process": [],
+    "2C38HP65C:shared_process": [],
+    "2C5ADMDY7:shared_process": [],
+    "2C3ZRJ316:shared_process": [],
+    "2C2V2359W:shared_process": [],
+    "2C4CBRK52:shared_process": [],
+    "2C1QNPTQM:shared_process": [],
+    "2C4RWCE43:shared_process": [],
+    "2C2Y6A37C:shared_process": [],
+    "2C38TNY92:shared_process": [],
+    "2C2CMRYM4:shared_process": [],
+    "2C4AT9J4F:shared_process": [],
+    "2C5B31EYQ:shared_process": [],
+    "2C3JAFSHJ:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
