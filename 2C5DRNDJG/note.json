@@ -1,0 +1,110 @@
+{
+  "paragraphs": [
+    {
+      "text": "import com.phemi.zeppelin.ZeppelinPhemiCredentials\nimport com.phemi.spark.PhemiSparkLib\n\nval cred \u003d new ZeppelinPhemiCredentials(z.getInterpreterContext())\nval psl \u003d new PhemiSparkLib(cred, sqlContext)\n\nval dataCollectionList \u003d psl.listPhemiDataCollectionInfo.select(\"name\")\n                            .map(row \u003d\u003e (row(0).toString, row(0).toString)).collect\nval dataCol \u003d z.select(\"Data Collections in Phemi Central\", dataCollectionList).toString\nprintln(\"%html\")",
+      "user": "admin",
+      "dateUpdated": "Dec 2, 2016 1:48:14 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "Data Collections in Phemi Central": "DSTK Testing"
+        },
+        "forms": {
+          "Data Collections in Phemi Central": {
+            "name": "Data Collections in Phemi Central",
+            "displayName": "Data Collections in Phemi Central",
+            "type": "select",
+            "defaultValue": "",
+            "options": [
+              {
+                "value": "DSTK Testing",
+                "displayName": "DSTK Testing"
+              },
+              {
+                "value": "FEAT_ACC_FUNCTIONS",
+                "displayName": "FEAT_ACC_FUNCTIONS"
+              },
+              {
+                "value": "FEAT_AUDIT_LOGGING_01",
+                "displayName": "FEAT_AUDIT_LOGGING_01"
+              },
+              {
+                "value": "FEAT_COLL_DPF_XvykI",
+                "displayName": "FEAT_COLL_DPF_XvykI"
+              },
+              {
+                "value": "FEAT_COLL_POL_DSHARE",
+                "displayName": "FEAT_COLL_POL_DSHARE"
+              },
+              {
+                "value": "FEAT_COLL_POL_RETENTION",
+                "displayName": "FEAT_COLL_POL_RETENTION"
+              }
+            ],
+            "hidden": false
+          }
+        }
+      },
+      "jobName": "paragraph_1480643134468_1878970976",
+      "id": "20161202-014534_1945167826",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": ""
+      },
+      "dateCreated": "Dec 2, 2016 1:45:34 AM",
+      "dateStarted": "Dec 2, 2016 1:48:14 AM",
+      "dateFinished": "Dec 2, 2016 1:48:15 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1480643141519_-104040179",
+      "id": "20161202-014541_2130373971",
+      "dateCreated": "Dec 2, 2016 1:45:41 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Test2",
+  "id": "2C5DRNDJG",
+  "angularObjects": {
+    "2C48ZH46Q:shared_process": [],
+    "2C4VE97GU:shared_process": [],
+    "2C5KQUX9D:shared_process": [],
+    "2C4U8E42K:shared_process": [],
+    "2C38HP65C:shared_process": [],
+    "2C5ADMDY7:shared_process": [],
+    "2C3ZRJ316:shared_process": [],
+    "2C2V2359W:shared_process": [],
+    "2C4CBRK52:shared_process": [],
+    "2C1QNPTQM:shared_process": [],
+    "2C4RWCE43:shared_process": [],
+    "2C2Y6A37C:shared_process": [],
+    "2C38TNY92:shared_process": [],
+    "2C2CMRYM4:shared_process": [],
+    "2C4AT9J4F:shared_process": [],
+    "2C5B31EYQ:shared_process": [],
+    "2C3JAFSHJ:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
